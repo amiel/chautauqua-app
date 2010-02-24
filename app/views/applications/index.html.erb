@@ -1,42 +1,48 @@
-<h1>Listing applications</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+	    <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", applications_path  %></li>
+  		<li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_application_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Applications</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+										<th>
+					<%= t("activerecord.attributes.application.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+</th>
+					          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @applications.each do |application| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= application.id %>
+          </td>
+										<td>
+						<%= link_to application.name, application_path(application) %>
+					</td>
+										<td>
+            <%= application.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", application_path(application) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_application_path(application) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", application_path(application), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Been on tour</th>
-    <th>How many tours</th>
-    <th>Chautauqua contributions</th>
-    <th>Expchautauqua eriences</th>
-    <th>Other experiences</th>
-    <th>Amount of involvement</th>
-    <th>Possibility of involvement</th>
-    <th>Transportation</th>
-    <th>Abilities mask</th>
-  </tr>
-
-<% @applications.each do |application| %>
-  <tr>
-    <td><%=h application.name %></td>
-    <td><%=h application.email %></td>
-    <td><%=h application.phone %></td>
-    <td><%=h application.been_on_tour %></td>
-    <td><%=h application.how_many_tours %></td>
-    <td><%=h application.chautauqua_contributions %></td>
-    <td><%=h application.expchautauqua_eriences %></td>
-    <td><%=h application.other_experiences %></td>
-    <td><%=h application.amount_of_involvement %></td>
-    <td><%=h application.possibility_of_involvement %></td>
-    <td><%=h application.transportation %></td>
-    <td><%=h application.abilities_mask %></td>
-    <td><%= link_to 'Show', application %></td>
-    <td><%= link_to 'Edit', edit_application_path(application) %></td>
-    <td><%= link_to 'Destroy', application, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New application', new_application_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

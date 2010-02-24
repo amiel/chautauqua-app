@@ -1,0 +1,26 @@
+<% form.inputs do %>
+	<%= form.input :name %>
+	<%= form.input :email %>
+	<%= form.input :phone %>
+
+	<%= form.input :been_on_tour, :as => :radio %>
+
+	<%= form.input :how_many_tours, :as => :radio, :collection => 1..10 %>
+	<%= form.input :chautauqua_contributions %>
+	<%= form.input :chautauqua_experiences %>
+	<%= form.input :other_experiences %>
+	<%= form.input :amount_of_involvement, :as => :radio, :collection => Application::AMOUNT_OF_INVOLVEMENT_OPTIONS %>
+	<%= form.input :possibility_of_involvement, :as => :select, :collection => Application::POSSIBILITY_OF_INVOLVEMENT_OPTIONS %>
+	<%= form.input :transportation, :as => :select, :collection => Application::TRANSPORTATION_OPTIONS %>
+	<%= form.input :other_transportation, :wrapper_html => { :class => 'js-hide' } %>
+	<%= form.input :abilities, :as => :bitmask_attributes %>
+	<%= form.input :other_abilities, :wrapper_html => { :class => 'js-hide' } %>
+<% end %>
+
+
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>  
+  <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", applications_path, :class => "button" %> 
+</div>

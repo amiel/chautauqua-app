@@ -1,63 +1,79 @@
-<p>
-  <b>Name:</b>
-  <%=h @application.name %>
-</p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", applications_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_application_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", application_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.application.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @application.name %>
+        </p>
 
-<p>
-  <b>Email:</b>
-  <%=h @application.email %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.email", :default => t("activerecord.labels.email", :default => "Email")) %>:</b>
+          <%= @application.email %>
+        </p>
 
-<p>
-  <b>Phone:</b>
-  <%=h @application.phone %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.phone", :default => t("activerecord.labels.phone", :default => "Phone")) %>:</b>
+          <%= @application.phone %>
+        </p>
 
-<p>
-  <b>Been on tour:</b>
-  <%=h @application.been_on_tour %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.been_on_tour", :default => t("activerecord.labels.been_on_tour", :default => "Been on tour")) %>:</b>
+          <%= @application.been_on_tour %>
+        </p>
 
-<p>
-  <b>How many tours:</b>
-  <%=h @application.how_many_tours %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.how_many_tours", :default => t("activerecord.labels.how_many_tours", :default => "How many tours")) %>:</b>
+          <%= @application.how_many_tours %>
+        </p>
 
-<p>
-  <b>Chautauqua contributions:</b>
-  <%=h @application.chautauqua_contributions %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.chautauqua_contributions", :default => t("activerecord.labels.chautauqua_contributions", :default => "Chautauqua contributions")) %>:</b>
+          <%= @application.chautauqua_contributions %>
+        </p>
 
-<p>
-  <b>Expchautauqua eriences:</b>
-  <%=h @application.expchautauqua_eriences %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.expchautauqua_eriences", :default => t("activerecord.labels.expchautauqua_eriences", :default => "Expchautauqua eriences")) %>:</b>
+          <%= @application.expchautauqua_eriences %>
+        </p>
 
-<p>
-  <b>Other experiences:</b>
-  <%=h @application.other_experiences %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.other_experiences", :default => t("activerecord.labels.other_experiences", :default => "Other experiences")) %>:</b>
+          <%= @application.other_experiences %>
+        </p>
 
-<p>
-  <b>Amount of involvement:</b>
-  <%=h @application.amount_of_involvement %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.amount_of_involvement", :default => t("activerecord.labels.amount_of_involvement", :default => "Amount of involvement")) %>:</b>
+          <%= @application.amount_of_involvement %>
+        </p>
 
-<p>
-  <b>Possibility of involvement:</b>
-  <%=h @application.possibility_of_involvement %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.possibility_of_involvement", :default => t("activerecord.labels.possibility_of_involvement", :default => "Possibility of involvement")) %>:</b>
+          <%= @application.possibility_of_involvement %>
+        </p>
 
-<p>
-  <b>Transportation:</b>
-  <%=h @application.transportation %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.transportation", :default => t("activerecord.labels.transportation", :default => "Transportation")) %>:</b>
+          <%= @application.transportation %>
+        </p>
 
-<p>
-  <b>Abilities mask:</b>
-  <%=h @application.abilities_mask %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.application.abilities_mask", :default => t("activerecord.labels.abilities_mask", :default => "Abilities mask")) %>:</b>
+          <%= @application.abilities_mask %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to "#{image_tag("web-app-theme/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}")} #{t("web-app-theme.edit", :default=> "Edit")}", edit_application_path(@application), :class => "button" %> 
+        <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}")} #{t("web-app-theme.delete", :default => "Delete")}", application_path(@application), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

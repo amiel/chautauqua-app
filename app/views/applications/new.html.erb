@@ -1,59 +1,16 @@
-<h1>New application</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+    </ul>
+  </div>          
+  <div class="content">            
+    <h2 class="title"><%=t :'applications.title' %></h2>
+    <div class="inner">
+      <% semantic_form_for @application, :url => applications_path, :html => { :class => 'form' } do |f| -%>
+        <%= render :partial => "form", :object => f %>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
-<% form_for(@application) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </p>
-  <p>
-    <%= f.label :been_on_tour %><br />
-    <%= f.check_box :been_on_tour %>
-  </p>
-  <p>
-    <%= f.label :how_many_tours %><br />
-    <%= f.text_field :how_many_tours %>
-  </p>
-  <p>
-    <%= f.label :chautauqua_contributions %><br />
-    <%= f.text_area :chautauqua_contributions %>
-  </p>
-  <p>
-    <%= f.label :expchautauqua_eriences %><br />
-    <%= f.text_area :expchautauqua_eriences %>
-  </p>
-  <p>
-    <%= f.label :other_experiences %><br />
-    <%= f.text_area :other_experiences %>
-  </p>
-  <p>
-    <%= f.label :amount_of_involvement %><br />
-    <%= f.text_field :amount_of_involvement %>
-  </p>
-  <p>
-    <%= f.label :possibility_of_involvement %><br />
-    <%= f.text_field :possibility_of_involvement %>
-  </p>
-  <p>
-    <%= f.label :transportation %><br />
-    <%= f.text_field :transportation %>
-  </p>
-  <p>
-    <%= f.label :abilities_mask %><br />
-    <%= f.text_field :abilities_mask %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', applications_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
