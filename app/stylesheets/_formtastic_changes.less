@@ -10,5 +10,12 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 --------------------------------------------------------------------------------------------------*/
 
 
-form.formtastic fieldset ol li.radio fieldset ol li{ float: left; margin-right: 2em; }
-form.formtastic fieldset ol li.bitmask_attributes fieldset ol li label input{ margin-right: 0.4em; }
+form.formtastic{
+	fieldset ol li.radio fieldset ol li{ float: left; margin-right: 2em; }
+	fieldset ol li.bitmask_attributes fieldset ol li label input{ margin-right: 0.4em; }
+
+	.columns{ overflow: hidden;
+		fieldset.left{ width: 48%; float: left; }
+		fieldset.right{ width: 48%; float: right; }
+	}
+}
