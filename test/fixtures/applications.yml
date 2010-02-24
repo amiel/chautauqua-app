@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+  phone: MyString
+  been_on_tour: false
+  how_many_tours: 1
+  chautauqua_contributions: MyText
+  expchautauqua_eriences: MyText
+  other_experiences: MyText
+  amount_of_involvement: MyString
+  possibility_of_involvement: MyString
+  transportation: MyString
+  abilities_mask: 1
+
+two:
+  name: MyString
+  email: MyString
+  phone: MyString
+  been_on_tour: false
+  how_many_tours: 1
+  chautauqua_contributions: MyText
+  expchautauqua_eriences: MyText
+  other_experiences: MyText
+  amount_of_involvement: MyString
+  possibility_of_involvement: MyString
+  transportation: MyString
+  abilities_mask: 1

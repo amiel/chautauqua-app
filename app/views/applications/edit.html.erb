@@ -1,0 +1,60 @@
+<h1>Editing application</h1>
+
+<% form_for(@application) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :been_on_tour %><br />
+    <%= f.check_box :been_on_tour %>
+  </p>
+  <p>
+    <%= f.label :how_many_tours %><br />
+    <%= f.text_field :how_many_tours %>
+  </p>
+  <p>
+    <%= f.label :chautauqua_contributions %><br />
+    <%= f.text_area :chautauqua_contributions %>
+  </p>
+  <p>
+    <%= f.label :expchautauqua_eriences %><br />
+    <%= f.text_area :expchautauqua_eriences %>
+  </p>
+  <p>
+    <%= f.label :other_experiences %><br />
+    <%= f.text_area :other_experiences %>
+  </p>
+  <p>
+    <%= f.label :amount_of_involvement %><br />
+    <%= f.text_field :amount_of_involvement %>
+  </p>
+  <p>
+    <%= f.label :possibility_of_involvement %><br />
+    <%= f.text_field :possibility_of_involvement %>
+  </p>
+  <p>
+    <%= f.label :transportation %><br />
+    <%= f.text_field :transportation %>
+  </p>
+  <p>
+    <%= f.label :abilities_mask %><br />
+    <%= f.text_field :abilities_mask %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @application %> |
+<%= link_to 'Back', applications_path %>
