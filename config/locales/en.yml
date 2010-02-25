@@ -23,7 +23,11 @@ en:
         transportation: Method of transport
         abilities: I can do...
         other_abilities: "I can also:"
+        how_many_tours_options:
+          _0: 0 - Newbie!
+          _10: 10 - Can't remember that far back...
     hints:
       application:
         other_experiences: "tout thyself"
         abilities: check as many as applicable
+        
