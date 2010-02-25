@@ -6,7 +6,7 @@
 		<p>Until we start reviewing the applications, you are welcome to edit any that have been sent in from this computer.</p>
 		<table class="table">
 			<% for app in @applications %>
-				<tr><td><%= app.name %></td><td>(<%= link_to 'edit', edit_application_path(app) %>)</td></tr>
+				<tr><td><%#= app.name %></td><td>(<%= link_to 'edit', edit_application_path(app) %>)</td></tr>
 			<% end %>
 		</table>
 	</div>
