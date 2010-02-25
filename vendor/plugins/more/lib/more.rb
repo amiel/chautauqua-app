@@ -143,11 +143,11 @@ class Less::More
           css = (HEADER % [source.to_s]) << css if self.header?
         end
         # make sure the appropriate cache directory exists
-        FileUtils.mkdir_p destination_dir
+        # FileUtils.mkdir_p destination_dir
         # write the css to our cache directory
-        File.open(destination, "w") {|f|
-          f.puts css
-        }
+        # File.open(destination, "w") {|f|
+        #   f.puts css
+        # }
       end
 
       # return the css
