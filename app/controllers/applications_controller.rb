@@ -1,8 +1,10 @@
 class ApplicationsController < ApplicationController
   before_filter :require_admin, :only => [:index, :show]
+  before_filter :need_applications_session, :only => [:new, :create, :edit, :update]
+  before_filter :require_application_from_current_session, :only => [:edit, :update]
 
   def index
-    @applications = Application.all
+    # @applications = Application.all
   end
 
   def show
@@ -23,8 +25,8 @@ class ApplicationsController < ApplicationController
     if @application.save
       
       session[:last_application_id] = @application.id
-      session[:applications] ||= []
       session[:applications] << @application.id
+      @applications << @application
       
       flash.now[:notice] = 'We have recieved your application.'
     else
@@ -44,4 +46,14 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  private
+  
+  def need_applications_session
+    session[:applications] ||= []
+    @applications = Application.find session[:applications]
+  end
+  
+  def require_application_from_current_session
+    redirect_to root_path unless session[:applications].include?(params[:id].to_i)
+  end
 end
