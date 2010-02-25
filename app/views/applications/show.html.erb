@@ -11,6 +11,15 @@
 
 				<dt>Email</dt>
 				<dd><%= @application.email %></dd>
+				
+				<dt>Phone</dt>
+				<dd><%= @application.phone %></dd>
+				
+				<dt>Been on tour before?</dt>
+				<dd><%= @application.been_on_tour? ? 'Yes' : 'No' %></dd>
+				
+				<dt>How many tours</dt>
+				<dd><%= @application.how_many_tours %></dd>
 			</dl>
 
       <div class="wat-cf">
