@@ -19,7 +19,7 @@ module CMAdmin
     def destroy
       current_admin_session.destroy
       flash[:notice] = I18n.t(:'flashes.cm_admin.admin_sessions.destroy.notice')
-      redirect_back_or_default cm_admin_login_url
+      redirect_to root_path
     end
   end
 end

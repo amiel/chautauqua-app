@@ -11,7 +11,7 @@ module CMAdmin
       @admin_session = AdminSession.new(params[:admin_session])
       if @admin_session.save
         flash[:notice] = I18n.t(:'flashes.cm_admin.admin_sessions.create.notice')
-        redirect_back_or_default cm_admin_account_url
+        redirect_back_or_default applications_path
       else
         render :action => :new
       end
