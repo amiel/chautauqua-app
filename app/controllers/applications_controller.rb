@@ -21,10 +21,9 @@ class ApplicationsController < ApplicationController
     @application = Application.new(params[:application])
 
     if @application.save
-      flash[:notice] = 'Application was successfully created.'
-      redirect_to(@application)
+      flash.now[:notice] = 'We have recieved your application.'
     else
-      render :action => "new"
+      render :action => 'new'
     end
   end
 
