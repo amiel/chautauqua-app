@@ -1,6 +1,6 @@
 class Application < ActiveRecord::Base
   TRANSPORTATION_OPTIONS = [ 'Will bring car', 'Bus from PT', 'Will get to tour and travel on bus', 'Other...' ]
-  AMOUNT_OF_INVOLVEMENT_OPTIONS = [ 'full tour', 'part tour', 'not sure yet' ]
+  AMOUNT_OF_INVOLVEMENT_OPTIONS = [ 'full_tour', 'part_tour', 'not_sure_yet' ].collect{|item| [item.humanize, item]}
   POSSIBILITY_OF_INVOLVEMENT_OPTIONS = (1..4).collect{|i| "#{i*25}% sure" }
   
   
