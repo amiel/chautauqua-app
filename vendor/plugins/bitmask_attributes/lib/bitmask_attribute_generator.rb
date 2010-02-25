@@ -5,7 +5,7 @@ class BitmaskAttributeGenerator
     @mask_name = mask_name
     @field_name = mask_name.to_s + '_mask'
     # need to make this check, but it doesn't work here
-    @base_class.logger.error("BitmaskAttributes: #{@base_class}##{@mask_name} is expecting a field in your database named #{@field_name}") unless @base_class.new.respond_to? @field_name
+    # @base_class.logger.error("BitmaskAttributes: #{@base_class}##{@mask_name} is expecting a field in your database named #{@field_name}") unless @base_class.new.respond_to? @field_name
     
     @bitmask_attributes = {}
     @bitmask_defaults = {}
