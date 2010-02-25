@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
   before_filter :require_admin, :only => [:index, :show]
-  before_filter :need_applications_session, :only => [:new, :create, :edit, :update]
-  before_filter :require_application_from_current_session, :only => [:edit, :update]
+  before_filter :need_applications_session, :only => [:new, :create, :edit, :update, :complete]
+  before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
 
   def index
     # @applications = Application.all
@@ -18,7 +18,11 @@ class ApplicationsController < ApplicationController
   def edit
     @application = Application.find(params[:id])
   end
-
+  
+  def complete
+    @application = Application.find(params[:id])
+  end
+  
   def create
     @application = Application.new(params[:application])
     
@@ -26,9 +30,9 @@ class ApplicationsController < ApplicationController
       
       session[:last_application_id] = @application.id
       session[:applications] << @application.id
-      @applications << @application
       
-      flash.now[:notice] = 'We have recieved your application.'
+      flash[:notice] = 'We have recieved your application.'
+      redirect_to :action => 'complete', :id => @application
     else
       render :action => 'new'
     end
@@ -39,8 +43,8 @@ class ApplicationsController < ApplicationController
 
     if @application.update_attributes(params[:application])
       session[:last_application_id] = @application.id
-      flash.now[:notice] = 'Your application was successfully updated.'
-      render :action => 'create'
+      flash[:notice] = 'Your application was successfully updated.'
+      redirect_to :action => 'complete', :id => @application
     else
       render :action => "edit"
     end
@@ -51,6 +55,9 @@ class ApplicationsController < ApplicationController
   def need_applications_session
     session[:applications] ||= []
     @applications = Application.find session[:applications]
+  rescue ActiveRecord::RecordNotFound => e
+    session[:applications] = []
+    @applications = []
   end
   
   def require_application_from_current_session
