@@ -6,7 +6,7 @@
 
 	<% form.inputs do %>
 		<%= form.input :been_on_tour, :as => :radio %>
-		<%= form.input :how_many_tours, :as => :select, :collection => (0..10).collect{|i| [t(:"formtastic.labels.application.how_many_tours_options._#{i}", :default => i), i]} %>
+		<%= form.input :how_many_tours, :as => :select, :collection => (0..10).collect{|i| [t(:"formtastic.labels.application.how_many_tours_options._#{i}", :default => i.to_s), i]} %>
 	<% end %>
 
 <% form.inputs do %>
