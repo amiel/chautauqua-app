@@ -4,6 +4,9 @@
 en:
   site_name: NOTC Application
   slogan: Chautauqua 2010 Tour Application
+  layouts:
+    application:
+      applications: All Applications
   applications:
     title: New Old Time Chautauqua 2010 Summer Tour Application
     sidebar:
@@ -23,6 +26,8 @@ en:
         transportation: Method of transport
         abilities: I can do...
         other_abilities: "I can also:"
+        driver_with_cdl: Driver (CDL)
+        car_driver: Driver (Car)
         how_many_tours_options:
           _0: 0 - Newbie!
           _10: 10 - Can't remember that far back...

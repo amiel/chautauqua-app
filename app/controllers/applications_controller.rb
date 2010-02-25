@@ -1,10 +1,14 @@
 class ApplicationsController < ApplicationController
+  include CMAdmin::Controller
+  layout 'application'
+  
   before_filter :require_admin, :only => [:index, :show]
+  
   before_filter :need_applications_session, :only => [:new, :create, :edit, :update, :complete]
   before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
 
   def index
-    # @applications = Application.all
+    @applications = Application.all
   end
 
   def show

@@ -8,29 +8,19 @@
     <div class="inner">
       <table class="table">
         <tr>             
-          <th class="first">ID</th>
-										<th>
-					<%= t("activerecord.attributes.application.name", :default => t("activerecord.labels.name", :default => "Name")) %>
-</th>
-					          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
-          <th class="last">&nbsp;</th>
+					<th class="first">Name</th>
+          <th>New?</th>
+					<th>Involvement</th>
+					<th>Skills</th>
+          <th class="last">Applied at</th>
         </tr>
         <% @applications.each do |application| -%>
         <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= application.id %>
-          </td>
-										<td>
-						<%= link_to application.name, application_path(application) %>
-					</td>
-										<td>
-            <%= application.created_at %>
-          </td>
-          <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", application_path(application) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_application_path(application) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", application_path(application), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-          </td>
+					<td><%= link_to application.name, application_path(application) %></td>
+					<td><%= application.been_on_tour? ? '' : 'New' %></td>
+					<td><%= application.amount_of_involvement.to_s.humanize %></td>
+					<td><%= abilities_to_sentence application %></td>
+					<td><%=l application.created_at %></td>
         </tr>          
         <% end -%>
       </table>
