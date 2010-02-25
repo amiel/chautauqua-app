@@ -4,7 +4,8 @@ class LessCacheController < ApplicationController
   
   def show
     path_spec = params[:id]
-
+    render :text => Less::More.page_cache?.inspect
+    return
     if Less::More.exists?(params[:id])
       headers['Cache-Control'] = 'public; max-age=2592000' unless Less::More.page_cache? # Cache for a month.
       render :text => Less::More.generate(params[:id]), :content_type => "text/css"
