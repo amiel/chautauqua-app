@@ -19,8 +19,13 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(params[:application])
-
+    
     if @application.save
+      
+      session[:last_application_id] = @application.id
+      session[:applications] ||= []
+      session[:applications] << @application.id
+      
       flash.now[:notice] = 'We have recieved your application.'
     else
       render :action => 'new'
@@ -31,8 +36,9 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
 
     if @application.update_attributes(params[:application])
-      flash[:notice] = 'Application was successfully updated.'
-      redirect_to(@application)
+      session[:last_application_id] = @application.id
+      flash.now[:notice] = 'Your application was successfully updated.'
+      render :action => 'create'
     else
       render :action => "edit"
     end
