@@ -11,6 +11,6 @@ $(document).ready(function() {
 		var other = $('#application_other_transportation_input');
 		if (/other/i.test($(this).val())) other.show();
 		else other.hide();
-	});
+	}).change();
 });
 

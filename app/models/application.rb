@@ -5,15 +5,17 @@ class Application < ActiveRecord::Base
   
   
   has_bitmask_attributes :abilities do |c|
-    c.attribute :performer,           0b0000000001
-    c.attribute :workshop_leader,     0b0000000010
-    c.attribute :band,                0b0000000100
-    c.attribute :rover,               0b0000001000
-    c.attribute :stagehand,           0b0000010000
-    c.attribute :cook,                0b0000100000
-    c.attribute :car_driver,          0b0001000000
-    c.attribute :driver_with_cdl,     0b0010000000
-    c.attribute :organizer,           0b0100000000
-    c.attribute :other,               0b1000000000
+    c.attribute :performer,           0b000000000001
+    c.attribute :workshop_leader,     0b000000000010
+    c.attribute :band,                0b000000000100
+    c.attribute :rover,               0b000000001000
+    c.attribute :stagehand,           0b000000010000
+    c.attribute :cook,                0b000000100000
+    c.attribute :kitchen_crew,        0b000001000000
+    c.attribute :car_driver,          0b000010000000
+    c.attribute :driver_with_cdl,     0b000100000000
+    c.attribute :truck_driver,        0b001000000000
+    c.attribute :organizer,           0b010000000000
+    c.attribute :other,               0b100000000000
   end
 end

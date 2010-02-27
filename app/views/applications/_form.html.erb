@@ -2,6 +2,7 @@
 		<%= form.input :name %>
 		<%= form.input :email %>
 		<%= form.input :phone %>
+		<%= form.input :address, :input_html => { :size => '30x3' } %>
 	<% end %>
 
 	<% form.inputs do %>
@@ -11,6 +12,7 @@
 
 <% form.inputs do %>
 	<%= form.input :chautauqua_contributions %>
+	<%= form.input :video_url %>
 	<%= form.input :chautauqua_experiences %>
 	<%= form.input :other_experiences %>
 	<%= form.input :amount_of_involvement, :as => :radio, :collection => Application::AMOUNT_OF_INVOLVEMENT_OPTIONS %>

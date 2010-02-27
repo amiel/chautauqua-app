@@ -13,7 +13,9 @@ module BitmaskAttributes
       
       list_item_content = bitmask_attribute_options[:attributes].collect do |attr|
         m = bitmask_attribute_options[:method_format] % attr
-        template.content_tag(:li, boolean_input(m, options))
+        os = options.merge(:label => I18n.t(:"formtastic.labels.#{@object.class.to_s.underscore}.#{m}", :default => m.to_s.humanize))
+        p m => os
+        template.content_tag(:li, boolean_input(m, os))
       end
       
       field_set_and_list_wrapping_for_method(method, options, list_item_content)
