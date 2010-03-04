@@ -2,9 +2,9 @@ class ApplicationsController < ApplicationController
   include CMAdmin::Controller
   layout 'application'
   
-  before_filter :require_admin, :only => [:index, :show]
+  before_filter :require_admin, :only => [:index, :show, :only_new]
   
-  before_filter :need_applications_session, :only => [:new, :create, :edit, :update, :complete]
+  before_filter :need_applications_session
   before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
 
   def index
@@ -15,7 +15,10 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
   end
   
-  
+  def only_new
+    @applications = Application.only_new.all
+    render :index
+  end
 
   def new
     @application = Application.new
@@ -60,10 +63,10 @@ class ApplicationsController < ApplicationController
   
   def need_applications_session
     session[:applications] ||= []
-    @applications = Application.find session[:applications]
+    @saved_applications = Application.find session[:applications]
   rescue ActiveRecord::RecordNotFound => e
     session[:applications] = []
-    @applications = []
+    @saved_applications = []
   end
   
   def require_application_from_current_session

@@ -3,10 +3,10 @@ class Application < ActiveRecord::Base
   AMOUNT_OF_INVOLVEMENT_OPTIONS = [ 'full_tour', 'part_tour', 'not_sure_yet' ].collect{|item| [item.humanize, item]}
   POSSIBILITY_OF_INVOLVEMENT_OPTIONS = (1..4).collect{|i| "#{i*25}% sure" }
   
+  named_scope :only_new, :conditions => { :been_on_tour => false }
   
   validates_presence_of :name
   validates_presence_of :email
-  validates_presence_of :been_on_tour
   validates_presence_of :chautauqua_contributions
 
   
