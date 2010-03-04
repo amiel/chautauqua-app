@@ -4,6 +4,12 @@ class Application < ActiveRecord::Base
   POSSIBILITY_OF_INVOLVEMENT_OPTIONS = (1..4).collect{|i| "#{i*25}% sure" }
   
   
+  validates_presence_of :name
+  validates_presence_of :email
+  validates_presence_of :been_on_tour
+  validates_presence_of :chautauqua_contributions
+
+  
   has_bitmask_attributes :abilities do |c|
     c.attribute :performer,           0b000000000001
     c.attribute :workshop_leader,     0b000000000010
