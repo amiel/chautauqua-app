@@ -36,6 +36,7 @@ en:
         how_many_tours_options:
           _0: 0 - Newbie!
           _10: 10 - Can't remember that far back...
+        references: "References&mdash;how did you hear about Chautauqua?"
     hints:
       application:
         other_experiences: "tout thyself"

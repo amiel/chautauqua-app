@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100304065152) do
+ActiveRecord::Schema.define(:version => 20100304185645) do
 
   create_table "admins", :force => true do |t|
     t.string   "login"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20100304065152) do
     t.datetime "updated_at"
     t.text     "address"
     t.string   "video_url"
+    t.string   "references"
   end
 
   create_table "pages", :force => true do |t|
