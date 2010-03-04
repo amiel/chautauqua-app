@@ -34,7 +34,7 @@
       </div>      
       <div id="main-navigation">
         <ul class="wat-cf">
-        	<%= content_tag(:li, link_to(t(:'.applications'), applications_path), :class => 'active') if current_admin %>
+        	<%= content_tag(:li, link_to(t(:'.applications'), applications_path), :class => "#{'active' if %w(show index).include? controller.action_name}") if current_admin %>
         </ul>
       </div>
     </div>    

@@ -7,7 +7,7 @@
 			
 			<% semantic_form_for @admin_session, :url => cm_admin_login_url do |f| %>
 				<% f.inputs do %>
-				  <%= f.input :email %>
+				  <%= f.input :login %>
 				  <%= f.input :password %>
 				  <% f.buttons do %>
 				    <%= f.commit_button I18n.t(:'formtastic.actions.admin_session.new') %>

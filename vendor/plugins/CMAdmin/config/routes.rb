@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :pages, :controller => 'spreadhead/pages', :path_prefix => 'admin'
   
+  map.login 'login', :controller => 'cm_admin/admin_sessions', :action => 'new'
+  
   map.namespace :cm_admin, :path_prefix => 'admin' do |admin|
     admin.signup 'signup', :controller => 'admins', :action => 'create', :conditions => { :method => :post }
     admin.signup 'signup', :controller => 'admins', :action => 'new', :conditions => { :method => :get }    
