@@ -25,6 +25,7 @@ en:
         amount_of_involvement: How much of the tour can you do? 
         possibility_of_involvement: How sure are you about your abiliity to participate in the tour at this time?
         transportation: Method of transport
+        other_transportation: Transportation
         abilities: I can do...
         other_abilities: "I can also:"
         driver_with_cdl: Bus Driver with a CDL

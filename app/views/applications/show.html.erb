@@ -6,20 +6,34 @@
   <div class="content">
     <div class="inner">
       <dl>
-				<dt>Name</dt>
-				<dd><%= @application.name %></dd>
+				<%= basic_attribute :name %>
+				<%= basic_attribute :email %>
+				<%= basic_attribute :phone %>
+				<%= basic_attribute(:address, :dd => { :class => 'multiline' }, :simple_format => true) %>
+				<%= attribute(:been_on_tour) { @application.been_on_tour? ? 'Yes' : 'No' } %>
+				<%= basic_attribute :how_many_tours %>
 
-				<dt>Email</dt>
-				<dd><%= @application.email %></dd>
+				<%= basic_attribute :chautauqua_contributions, :simple_format => true %>
+				<%= attribute('Video') { @application.video_url? ? link_to(h(@application.video_url), h(@application.video_url)) : 'Not Supplied' } %>
+				<%= basic_attribute :chautauqua_experiences, :simple_format => true %>
 				
-				<dt>Phone</dt>
-				<dd><%= @application.phone %></dd>
+				<%= basic_attribute :other_experiences, :simple_format => true %>
 				
-				<dt>Been on tour before?</dt>
-				<dd><%= @application.been_on_tour? ? 'Yes' : 'No' %></dd>
+				<%= attribute(:amount_of_involvement) {|name| h @application.send(name).to_s.titleize } %>
+				<%= basic_attribute :possibility_of_involvement %>
 				
-				<dt>How many tours</dt>
-				<dd><%= @application.how_many_tours %></dd>
+				<% if @application.transportation.match /other/i then %>
+					<%= basic_attribute :other_transportation %>
+				<% else %>
+					<%= basic_attribute :transportation %>
+				<% end %>
+				
+				<%= attribute(:abilities) { abilities_to_sentence @application } %>
+				
+				<% if @application.other? then %>
+					<%= basic_attribute :other_abilities %>
+				<% end %>
+				
 			</dl>
 
       <div class="wat-cf">
