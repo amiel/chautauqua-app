@@ -1,8 +1,8 @@
 module ApplicationsHelper
-  def abilities_to_sentence application
+  def abilities_to_sentence application, include_other_abilities = false
     abilities = application.abilities.to_h.reject{|k,v| !v }
     
-    if abilities[:other] and application.other_abilities?
+    if abilities[:other] and application.other_abilities? and include_other_abilities
       abilities[application.other_abilities] = true
     end
     

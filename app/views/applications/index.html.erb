@@ -19,7 +19,7 @@
 					<td><%= link_to application.name, application_path(application) %></td>
 					<td><%= application.been_on_tour? ? '' : 'New' %></td>
 					<td><%= application.amount_of_involvement.to_s.humanize %></td>
-					<td><%= truncate abilities_to_sentence(application) %></td>
+					<td><%= truncate abilities_to_sentence(application, true) %></td>
 					<td><%=l application.created_at %></td>
         </tr>          
         <% end -%>
