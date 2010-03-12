@@ -28,5 +28,14 @@ $(document).ready(function() {
 		}
 	}).click();
 	
+	$('[name=application\\[been_on_tour\\]]').change(function(){
+		var v = $(this).val(), how_many_tours = $('#application_how_many_tours'), how_many_tours_container = $('#application_how_many_tours_input');
+		if (v == 'false') {
+			how_many_tours.val('0');
+			how_many_tours_container.hide();
+		} else {
+			how_many_tours_container.show();
+		}
+	});
 });
 
