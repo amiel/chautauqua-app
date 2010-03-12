@@ -4,6 +4,7 @@ class Application < ActiveRecord::Base
   POSSIBILITY_OF_INVOLVEMENT_OPTIONS = (1..4).collect{|i| "#{i*25}% sure" }
   
   named_scope :only_new, :conditions => { :been_on_tour => false }
+  named_scope :newest_first, :order => 'created_at desc'
   
   validates_presence_of :name
   validates_presence_of :email

@@ -8,7 +8,7 @@ class ApplicationsController < ApplicationController
   before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
 
   def index
-    @applications = Application.all
+    @applications = Application.newest_first.all
   end
 
   def show
@@ -16,7 +16,7 @@ class ApplicationsController < ApplicationController
   end
   
   def only_new
-    @applications = Application.only_new.all
+    @applications = Application.only_new.newest_first.all
     render :index
   end
 
