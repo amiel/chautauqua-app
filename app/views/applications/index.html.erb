@@ -16,11 +16,11 @@
         </tr>
         <% @applications.each do |application| -%>
         <tr class="<%= cycle("odd", "even") %>">
-					<td><%= link_to application.name, application_path(application) %></td>
+					<td><%= link_to truncate(application.name, :length => 25), application_path(application) %></td>
 					<td><%= application.been_on_tour? ? '' : 'New' %></td>
 					<td><%= application.amount_of_involvement.to_s.humanize %></td>
-					<td><%= truncate abilities_to_sentence(application, true) %></td>
-					<td><%=l application.created_at %></td>
+					<td><%= truncate abilities_to_sentence(application, true), :length => 35 %></td>
+					<td><%=l application.created_at.to_date %></td>
         </tr>          
         <% end -%>
       </table>
