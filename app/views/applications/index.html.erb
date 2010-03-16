@@ -10,16 +10,18 @@
         <tr>             
 					<th class="first">Name</th>
           <th>New?</th>
-					<th>Involvement</th>
+					<th colspan="2">Involvement</th>
+
 					<th>Skills</th>
           <th class="last">Applied at</th>
         </tr>
         <% @applications.each do |application| -%>
         <tr class="<%= cycle("odd", "even") %>">
-					<td><%= link_to truncate(application.name, :length => 25), application_path(application) %></td>
+					<td><%= link_to truncate(application.name, :length => 22), application_path(application) %></td>
 					<td><%= application.been_on_tour? ? '' : 'New' %></td>
 					<td><%= application.amount_of_involvement.to_s.humanize %></td>
-					<td><%= truncate abilities_to_sentence(application, true), :length => 35 %></td>
+					<td><%= application.possibility_of_involvement.to_s.humanize %></td>
+					<td><%= truncate abilities_to_sentence(application, true), :length => 33 %></td>
 					<td><%=l application.created_at.to_date %></td>
         </tr>          
         <% end -%>
