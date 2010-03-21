@@ -1,9 +1,9 @@
 <!-- <%= session[:applications].inspect %> -->
-<% unless @saved_applications.empty? or Time.current > Time.parse('March 20, 2010') %>
+<% unless @saved_applications.empty? or Time.current > Time.parse('March 31, 2010') %>
 <div class="block">
 	<h3>Applications from this computer</h3>
 	<div class="content">
-		<p>Until we start reviewing the applications on March 20th, you are welcome to edit any that have been sent in from this computer.</p>
+		<p>Until we start reviewing the applications on March 31st, you are welcome to edit any that have been sent in from this computer.</p>
 		<table class="table">
 			<% for app in @saved_applications %>
 				<tr><td><%= app.name %></td><td>(<%= link_to 'edit', edit_application_path(app) %>)</td></tr>
