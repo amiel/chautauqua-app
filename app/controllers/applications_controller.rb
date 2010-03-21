@@ -22,6 +22,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @application = Application.new
+    flash.now[:notice] = t(:'extended_deadline')
   end
 
   def edit
