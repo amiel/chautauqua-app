@@ -37,5 +37,15 @@ $(document).ready(function() {
 			how_many_tours_container.show();
 		}
 	});
+	
+	
+	// admin
+	$('.applications-index .actions [data-update-path]').click(function() {
+		var t = $(this), vars = { '_method': 'put', 'application': { 'status': t.attr('data-status') } };
+		t.parent().find('a').removeClass('active')
+		$.post(t.attr('data-update-path'), vars, function() {
+			t.addClass('active');
+		});
+	});
 });
 

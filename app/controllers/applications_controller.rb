@@ -2,13 +2,18 @@ class ApplicationsController < ApplicationController
   include CMAdmin::Controller
   layout 'application'
   
-  before_filter :require_admin, :only => [:index, :show, :only_new]
   
-  before_filter :need_applications_session
-  before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
+  if ApplicationDeadline.before_deadline? then
+    before_filter :require_admin, :except => [:new, :edit, :update, :complete]
+    
+    before_filter :need_applications_session
+    before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
+  else
+    before_filter :require_admin, :except => [:closed]
+  end
 
   def index
-    @applications = Application.newest_first.all
+    @applications = Application.newest_first
   end
 
   def show
@@ -22,9 +27,12 @@ class ApplicationsController < ApplicationController
 
   def new
     @application = Application.new
-    flash.now[:notice] = t(:'extended_deadline')
   end
-
+  
+  def closed
+    flash.now[:notice] = t(:'applications_are_closed')
+  end
+  
   def edit
     @application = Application.find(params[:id])
   end
@@ -51,12 +59,20 @@ class ApplicationsController < ApplicationController
   def update
     @application = Application.find(params[:id])
 
-    if @application.update_attributes(params[:application])
-      session[:last_application_id] = @application.id
-      flash[:notice] = 'Your application was successfully updated.'
-      redirect_to :action => 'complete', :id => @application
-    else
-      render :action => "edit"
+    respond_to do |format|
+      if @application.update_attributes(params[:application])
+        format.html {
+          if ! current_admin then
+            session[:last_application_id] = @application.id
+            flash[:notice] = 'Your application was successfully updated.'
+          end
+          redirect_to :action => 'complete', :id => @application
+        }
+        format.js
+      else
+        format.html{ render :action => "edit" }
+        format.js
+      end
     end
   end
 

@@ -5,6 +5,11 @@ en:
   site_name: NOTC Application
   slogan: Chautauqua 2010 Tour Application
   extended_deadline: The application deadline has been extended to March 31st.
+  applications_are_closed: "Sorry, you are a bit late. The application deadline was March 31st."
+  application_actions:
+    accepted: Accept
+    wait_list: Wait List
+    no_email: No Email
   layouts:
     application:
       applications: Applications

@@ -24,4 +24,9 @@ module ApplicationsHelper
     content_tag(:dt, formtastic_label(name), options[:dt]) +
     content_tag(:dd, yield(name), options[:dd])
   end
+  
+  def application_action(application, action)
+    dom_class = (application.status == action.to_s) ? 'active' : ''
+    link_to_function I18n.t(:"application_actions.#{action}"), '', :class => dom_class, :'data-status' => action, :'data-update-path' => application_path(application, :format => 'js')
+  end
 end
