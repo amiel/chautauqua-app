@@ -1,4 +1,5 @@
 <% if @application.errors.empty? then %>
+	Base.application_errors = null;
 <% else %>
-
+	Base.application_errors = <%= @application.errors.to_json %>;
 <% end %>
