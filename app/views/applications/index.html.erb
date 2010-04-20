@@ -12,8 +12,11 @@
           <th>New?</th>
 					<th colspan="2">Involvement</th>
 
-          <!-- <th>Skills</th> -->
-          <th>Actions</th>
+					<% if ApplicationDeadline.before_deadline? then %>
+            <th>Skills</th>
+          <% else %>
+            <th>Actions</th>
+          <% end %>
           <th class="last">Applied at</th>
         </tr>
         <% @applications.each do |application| -%>
@@ -22,12 +25,15 @@
 					<td><%= application.been_on_tour? ? '' : 'New' %></td>
 					<td><%= application.amount_of_involvement.to_s.humanize %></td>
 					<td><%= application.possibility_of_involvement.to_s.humanize %></td>
-          <!-- <td><%= truncate abilities_to_sentence(application, true), :length => 33 %></td> -->
-					<td class="actions">
-            <%= application_action application, :accepted %>
-            <%= application_action application, :wait_list %>
-            <%= application_action application, :no_email %>
-					</td>
+					<% if ApplicationDeadline.before_deadline? then %>
+            <td><%= truncate abilities_to_sentence(application, true), :length => 33 %></td>
+          <% else %>
+  					<td class="actions">
+              <%= application_action application, :accepted %>
+              <%= application_action application, :wait_list %>
+              <%= application_action application, :no_email %>
+  					</td>
+  				<% end %>
 					<td><%=l application.created_at.to_date %></td>
         </tr>          
         <% end -%>
