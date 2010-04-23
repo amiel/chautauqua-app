@@ -22,6 +22,8 @@ class Application < ActiveRecord::Base
   def deliver_email!
     case status
     when 'accepted'
+      logger.error "SENDING AN ACCEPTANCE EMAIL TO #{application.emails.inspect}"
+      
       Mailer.deliver_acceptance self
     when 'wait_list'
       Mailer.deliver_wait_list self
