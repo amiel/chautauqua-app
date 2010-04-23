@@ -5,18 +5,31 @@ class Application < ActiveRecord::Base
   
   named_scope :only_new, :conditions => { :been_on_tour => false }
   named_scope :part_time, :conditions => 'amount_of_involvement != "full_tour"'
-  # named_scope :not_picked, :conditions => [ 'picked != ?', true ]
   
   named_scope :newest_first, :order => 'created_at desc'
+  
+  named_scope :accepted, :conditions => { :status => 'accepted' }
+  named_scope :wait_list, :conditions => { :status => 'wait_list' }
   
   validates_presence_of :name
   validates_presence_of :email
   validates_presence_of :chautauqua_contributions
 
-
-  def pick!
-    self.update_attribute :picked, true
+  def emails
+    self.email.split(/[,\s]+/)
   end
+  
+  def deliver_email!
+    case status
+    when 'accepted'
+      Mailer.deliver_acceptance self
+    when 'wait_list'
+      Mailer.deliver_wait_list self
+    else
+      nil # noop
+    end
+  end
+
   
   has_bitmask_attributes :abilities do |c|
     c.attribute :performer,           0b000000000001
