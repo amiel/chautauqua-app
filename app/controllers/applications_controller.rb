@@ -12,6 +12,10 @@ class ApplicationsController < ApplicationController
     before_filter :require_admin, :except => [:closed]
   end
 
+  def add_reply
+    @application = Application.find params[:id]
+  end
+
   def index
     @applications = Application.newest_first
   end
@@ -65,8 +69,10 @@ class ApplicationsController < ApplicationController
           if ! current_admin then
             session[:last_application_id] = @application.id
             flash[:notice] = 'Your application was successfully updated.'
+            redirect_to :action => 'complete', :id => @application
+          else
+            redirect_to applications_path
           end
-          redirect_to :action => 'complete', :id => @application
         }
         format.js
       else
@@ -87,6 +93,6 @@ class ApplicationsController < ApplicationController
   end
   
   def require_application_from_current_session
-    redirect_to root_path unless session[:applications].include?(params[:id].to_i)
+    redirect_to root_path unless session[:applications].include?(params[:id].to_i) || current_admin
   end
 end
