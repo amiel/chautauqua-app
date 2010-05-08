@@ -23,4 +23,15 @@ class Mailer < ActionMailer::Base
     body       :name => application.name
   end
 
+
+  def letter_to_the_accepted(application, sent_at = Time.current)
+    subject   'Chautauqua'
+    recipients application.emails
+    from       '"Who-Am-Us" <amiel.martin+whoamus@gmail.com>'
+    sent_on    sent_at
+    bcc         'amiel.martin+whoamus_sanity_check@gmail.com'
+        
+    body       :name => application.name
+  end
+
 end

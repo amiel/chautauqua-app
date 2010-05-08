@@ -37,7 +37,7 @@
   				<% end %>
   				<td>
   				  <% if application.reply? then %>
-  				    Replied
+  				    Replied <span class="subtext"><%= link_to 'edit', add_reply_application_path(application) %></span>
   				  <% else %>
     				  <%= link_to 'Add Reply', add_reply_application_path(application) %>
     				<% end %>
