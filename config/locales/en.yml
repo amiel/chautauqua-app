@@ -23,6 +23,7 @@ en:
     titles:
     labels:
       application:
+        reply: Paste reply from email
         been_on_tour: Been on tour before?
         how_many_tours: How many tours?
         chautauqua_contributions: What can you contribute to the tour?
