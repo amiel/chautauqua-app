@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100508064507) do
+ActiveRecord::Schema.define(:version => 20100508072721) do
 
   create_table "admins", :force => true do |t|
     t.string   "login"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20100508064507) do
     t.string   "video_url"
     t.string   "references"
     t.string   "status"
-    t.string   "reply"
+    t.text     "reply",                      :limit => 255
   end
 
   create_table "pages", :force => true do |t|
