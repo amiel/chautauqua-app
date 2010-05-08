@@ -36,7 +36,8 @@
         <ul class="wat-cf">
 					<% if current_admin then %>
 	        	<%= content_tag(:li, link_to(t(:'.applications'), applications_path), :class => "#{'active' if current_page? applications_path}") %>
-						<%= content_tag(:li, link_to(t(:'.new_applications'), only_new_applications_path), :class => "#{'active' if current_page? only_new_applications_path}") %>
+						<%= content_tag(:li, link_to(t(:'.accepted_applications'), accepted_applications_path), :class => "#{'active' if current_page? accepted_applications_path}") %>
+						<%= content_tag(:li, link_to(t(:'.wait_list_applications'), wait_list_applications_path), :class => "#{'active' if current_page? wait_list_applications_path}") %>
 					<% end %>
         </ul>
       </div>

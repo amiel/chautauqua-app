@@ -7,9 +7,11 @@ class Application < ActiveRecord::Base
   named_scope :part_time, :conditions => 'amount_of_involvement != "full_tour"'
   
   named_scope :newest_first, :order => 'created_at desc'
+  named_scope :by_name, :order => 'name'
   
   named_scope :accepted, :conditions => { :status => 'accepted' }
   named_scope :wait_list, :conditions => { :status => 'wait_list' }
+  
   
   validates_presence_of :name
   validates_presence_of :email

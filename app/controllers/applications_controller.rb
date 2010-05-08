@@ -28,6 +28,16 @@ class ApplicationsController < ApplicationController
     @applications = Application.only_new.newest_first.all
     render :index
   end
+  
+  def accepted
+    @applications = Application.accepted.by_name.all
+    render :index
+  end
+  
+  def wait_list
+    @applications = Application.wait_list.by_name.all
+    render :index
+  end
 
   def new
     @application = Application.new
