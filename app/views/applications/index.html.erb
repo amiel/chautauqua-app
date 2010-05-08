@@ -4,7 +4,7 @@
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Applications</h2>
+    <h2 class="title"><%= controller.action_name == 'index' ? 'All' : controller.action_name.titleize %> Applications</h2>
     <div class="inner">
       <table class="table">
         <tr>          
