@@ -9,10 +9,10 @@
       <table class="table">
         <tr>          
 					<th class="first">Name</th>
-          <th>New?</th>
-					<th colspan="2">Involvement</th>
-
-					<% if ApplicationDeadline.before_deadline? then %>
+          <!-- <th>New?</th> -->
+          <!-- <th colspan="2">Involvement</th> -->
+          
+					<% if ApplicationDeadline.before_deadline? and false then %>
             <th>Skills</th>
           <% else %>
             <th>Actions</th>
@@ -23,9 +23,9 @@
         <% @applications.each do |application| -%>
         <tr class="<%= cycle("odd", "even") %>">
 					<td><%= link_to truncate(application.name, :length => 22), application_path(application) %></td>
-					<td><%= application.been_on_tour? ? '' : 'New' %></td>
-					<td><%= application.amount_of_involvement.to_s.humanize %></td>
-					<td><%= application.possibility_of_involvement.to_s.humanize %></td>
+          <!-- <td><%= application.been_on_tour? ? '' : 'New' %></td> -->
+          <!-- <td><%= application.amount_of_involvement.to_s.humanize %></td> -->
+          <!-- <td><%= application.possibility_of_involvement.to_s.humanize %></td> -->
 					<% if ApplicationDeadline.before_deadline? and false then %>
             <td><%= truncate abilities_to_sentence(application, true), :length => 33 %></td>
           <% else %>
@@ -38,6 +38,7 @@
   				<td>
   				  <% if application.reply? then %>
   				    Replied <span class="subtext"><%= link_to 'edit', add_reply_application_path(application) %></span>
+  				    <%= link_to 'Read Reply', read_reply_application_path(application) %>
   				  <% else %>
     				  <%= link_to 'Add Reply', add_reply_application_path(application) %>
     				<% end %>

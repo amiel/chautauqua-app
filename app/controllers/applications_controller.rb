@@ -24,6 +24,10 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
   end
   
+  def read_reply
+    @application = Application.find(params[:id])
+  end
+  
   def only_new
     @applications = Application.only_new.newest_first.all
     render :index

@@ -5,9 +5,9 @@
     <ul class="wat-cf">
       <li class="first"><%= link_to "Start over", root_path  %></li>
     </ul>
-  </div>          
+  </div>
   <div class="content">            
-    <h2 class="title"><%= t("web-app-theme.edit", :default => "Edit") %> Application</h2>
+    <h2 class="title">Reply from <%= @application.name %></h2>
     <div class="inner">
       <% semantic_form_for @application, :url => application_path(@application), :html => { :class => 'form', :method => :put } do |f| -%>
 
@@ -19,8 +19,8 @@
           <button class="button" type="submit">
             <%= image_tag("web-app-theme/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %>
         		Save Reply
-          </button>  
-          <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", applications_path, :class => "button" %> 
+          </button>
+          <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", applications_path, :class => "button" %>
         </div>
 
       <% end -%>
