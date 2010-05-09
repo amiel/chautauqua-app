@@ -25,7 +25,7 @@ class Mailer < ActionMailer::Base
 
 
   def letter_to_the_accepted(application, sent_at = Time.current)
-    subject   'Chautauqua'
+    subject   'Chautauquans, Please Respond'
     recipients application.emails
     from       '"Who-Am-Us" <amiel.martin+whoamus@gmail.com>'
     sent_on    sent_at
