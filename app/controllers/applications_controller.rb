@@ -81,7 +81,7 @@ class ApplicationsController < ApplicationController
             flash[:notice] = 'Your application was successfully updated.'
             redirect_to :action => 'complete', :id => @application
           else
-            redirect_to applications_path
+            redirect_to accepted_applications_path
           end
         }
         format.js
