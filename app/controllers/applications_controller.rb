@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
   
   
   if ApplicationDeadline.before_deadline? then
-    before_filter :require_admin, :except => [:new, :edit, :update, :complete]
+    before_filter :require_admin, :except => [:new, :edit, :update, :complete, :create]
     
     before_filter :need_applications_session
     before_filter :require_application_from_current_session, :only => [:edit, :update, :complete]
@@ -29,17 +29,17 @@ class ApplicationsController < ApplicationController
   end
   
   def only_new
-    @applications = Application.only_new.newest_first.all
+    @applications = Application.only_new.newest_first
     render :index
   end
   
   def accepted
-    @applications = Application.accepted.by_name.all
+    @applications = Application.accepted.by_name
     render :index
   end
   
   def wait_list
-    @applications = Application.wait_list.by_name.all
+    @applications = Application.wait_list.by_name
     render :index
   end
 

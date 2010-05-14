@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20100508072721) do
     t.string   "video_url"
     t.string   "references"
     t.string   "status"
-    t.text     "reply",                      :limit => 255
+    t.text     "reply"
   end
 
   create_table "pages", :force => true do |t|

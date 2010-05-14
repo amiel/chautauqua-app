@@ -9,6 +9,8 @@ class Application < ActiveRecord::Base
   named_scope :newest_first, :order => 'created_at desc'
   named_scope :by_name, :order => 'name'
   
+  named_scope :replied, :conditions => 'reply IS NOT NULL'
+  
   named_scope :accepted, :conditions => { :status => 'accepted' }
   named_scope :wait_list, :conditions => { :status => 'wait_list' }
   

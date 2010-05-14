@@ -20,7 +20,7 @@
           <th></th>
           <th class="last">Applied at</th>
         </tr>
-        <% @applications.each do |application| -%>
+        <% @applications.all.each do |application| -%>
         <tr class="<%= cycle("odd", "even") %>">
 					<td><%= link_to truncate(application.name, :length => 22), application_path(application) %></td>
           <!-- <td><%= application.been_on_tour? ? '' : 'New' %></td> -->
@@ -49,7 +49,7 @@
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
-					Showing <%= @applications.size %> applications.
+					Showing <%= @applications.count %> applications.
         </div>
         
       </div>
@@ -57,4 +57,9 @@
   </div>
 </div>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<% content_for :sidebar do -%>
+  <p>Showing <strong><%= @applications.count %></strong> applications.</p>
+  <p><strong><%= @applications.accepted.count %></strong> Accepted.</p>
+  <p><strong><%= @applications.replied.count %></strong> Replied.</p>
+	
+<% end %>
