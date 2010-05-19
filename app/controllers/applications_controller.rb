@@ -38,6 +38,11 @@ class ApplicationsController < ApplicationController
     render :index
   end
   
+  def accepted_but_not_replied
+    @applications = Application.accepted.not_replied
+    render :index
+  end
+  
   def wait_list
     @applications = Application.wait_list.by_name
     render :index

@@ -16,6 +16,7 @@ en:
       new_applications: New Only
       accepted_applications: Accepted Applications
       wait_list_applications: Wait List
+      accepted_but_not_replied: Accepted but not Replied
       logout: Logout
   applications:
     title: New Old Time Chautauqua 2010 Summer Tour Application
